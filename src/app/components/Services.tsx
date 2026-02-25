@@ -4,34 +4,41 @@ import { Sparkles, Users, Briefcase, Music, Lightbulb } from 'lucide-react';
 const services = [
   {
     title: 'Fashion Week & Runway Shows',
-    description: 'End-to-end conceptualization and flawless delivery of your vision',
+    description: 'Complete runway production including stage design, model coordination, choreography, lighting, and show execution',
     image: '/src/assets/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
     icon: Sparkles,
   },
   {
     title: 'Weddings & Celebrations',
-    description: 'Luxury wedding production that honors tradition while embracing elegance',
-    image: 'https://images.unsplash.com/photo-1732382643619-872165f61891?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjB3ZWRkaW5nJTIwbWFuZGFwJTIwZGVjb3JhdGlvbnxlbnwxfHx8fDE3NzA0ODU3MDV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    description: 'Bespoke wedding and celebration experiences with curated décor, lighting, entertainment, and seamless event management',
+    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
     icon: Users,
   },
   {
     title: 'Corporate Events',
-    description: 'Professional conferences, galas, and brand experiences that inspire',
-    image: 'https://images.unsplash.com/photo-1768508947825-0a63f7c46a2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBnYWxhJTIwZGlubmVyJTIwZXZlbnR8ZW58MXx8fHwxNzcwNDc5NDkwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    description: 'Strategic corporate event solutions including conferences, award nights, brand showcases, and executive experiences',
+    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
     icon: Briefcase,
   },
   {
     title: 'Entertainment & Stage Production',
-    description: 'Live shows, performances, and productions that captivate audiences',
-    image: 'https://images.unsplash.com/photo-1566735355835-bddb43dc3f63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsaXZlJTIwY29uY2VydCUyMHN0YWdlJTIwcGVyZm9ybWFuY2V8ZW58MXx8fHwxNzcwNTY4NjUzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    description: 'Full-scale stage production for concerts, cultural shows, and live performances with creative and technical direction',
+    image: 'src/assets/image.png',
     icon: Music,
   },
   {
     title: 'Visuals, Lighting & Sound',
-    description: 'Technical excellence in AV, lighting design, and immersive experiences',
-    image: 'https://images.unsplash.com/photo-1764884487727-4757bd493cda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbnRlcnRhaW5tZW50JTIwc2hvdyUyMHN0YWdlJTIwbGlnaHRzfGVufDF8fHx8MTc3MDU2ODY1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    description: 'Advanced AV solutions, architectural lighting, LED visuals, and sound engineering that transform event environments',
+    image: 'src/assets/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
     icon: Lightbulb,
   },
+
+    {
+    title: 'Flagship Events & Product Launches',
+    description: 'High-impact launches and flagship events designed to showcase products, engage media, and elevate brand presence',
+    image: 'src/assets/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
+    icon: Music,
+  }
 ];
 
 export function Services() {

@@ -1,84 +1,84 @@
 import { motion } from 'motion/react';
-import { Sparkles, Users, Briefcase, Music, Lightbulb, Camera, Mic, Video } from 'lucide-react';
+import { Sparkles, Users, Briefcase, Music, Lightbulb, Camera } from 'lucide-react';
 
 const services = [
   {
-    title: 'Event Planning & Execution',
-    description: 'Comprehensive event conceptualization, planning, and flawless execution from start to finish.',
+    title: 'Fashion Week & Runway Shows',
+    description: 'Complete runway production including stage design, model coordination, choreography, lighting, and show execution',
     details: [
-      'Concept Development',
-      'Budget Management',
-      'Vendor Coordination',
-      'Timeline Planning',
-      'On-site Execution',
+      'Runway & Stage Design',
+      'Model & Designer Coordination',
+      'Show Choreography & Rehearsals',
+      'Backstage & Line-up Management',
+      'Lighting & Visual Direction',
     ],
     icon: Sparkles,
-    image: 'https://images.unsplash.com/photo-1765277873753-63b431f3938e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxldmVudCUyMHByb2R1Y3Rpb24lMjBiYWNrc3RhZ2UlMjBzZXR1cHxlbnwxfHx8fDE3NzA1Njg2NTV8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
   },
   {
     title: 'Weddings & Celebrations',
-    description: 'Luxury wedding production that creates unforgettable moments while honoring tradition.',
+    description: 'Bespoke wedding and celebration experiences with curated décor, lighting, entertainment, and seamless event management.',
     details: [
+      'Venue Styling & Decor Design',
       'Traditional & Modern Ceremonies',
-      'Venue Selection & Design',
-      'Decor & Floral Arrangements',
       'Entertainment Coordination',
-      'Guest Experience Management',
+      'Guest Experience Planning',
+      'End-to-End Celebration Management',
     ],
     icon: Users,
-    image: 'https://images.unsplash.com/photo-1732382643619-872165f61891?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjB3ZWRkaW5nJTIwbWFuZGFwJTIwZGVjb3JhdGlvbnxlbnwxfHx8fDE3NzA0ODU3MDV8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
   },
   {
     title: 'Corporate Events',
-    description: 'Professional conferences, product launches, galas, and brand experiences that inspire.',
+    description: 'Strategic corporate event solutions including conferences, award nights, brand showcases, and executive experiences.',
     details: [
       'Conferences & Seminars',
       'Product Launches',
       'Award Ceremonies',
-      'Team Building Events',
       'Brand Activations',
+      'Executive Event Management',
     ],
     icon: Briefcase,
-    image: 'https://images.unsplash.com/photo-1768508947825-0a63f7c46a2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBnYWxhJTIwZGlubmVyJTIwZXZlbnR8ZW58MXx8fHwxNzcwNDc5NDkwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
   },
   {
     title: 'Entertainment & Stage Production',
-    description: 'Live shows, concerts, and performances that captivate and engage audiences.',
+    description: 'Full-scale stage production for concerts, cultural shows, and live performances with creative and technical direction.',
     details: [
-      'Live Concerts',
-      'Cultural Performances',
-      'Stage Design & Setup',
-      'Artist Management',
-      'Show Direction',
+      'Concert & Live Show Production',
+      'Stage Design & Fabrication',
+      'Artist & Talent Management',
+      'Technical Show Direction',
+      'Live Performance Execution',
     ],
     icon: Music,
-    image: 'https://images.unsplash.com/photo-1566735355835-bddb43dc3f63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsaXZlJTIwY29uY2VydCUyMHN0YWdlJTIwcGVyZm9ybWFuY2V8ZW58MXx8fHwxNzcwNTY4NjUzfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/src/assets/image.png',
   },
   {
     title: 'Visuals, Lighting & Sound',
-    description: 'Technical excellence in AV production, lighting design, and immersive audio experiences.',
+    description: 'Advanced AV solutions, architectural lighting, LED visuals, and sound engineering that transform event environments.',
     details: [
-      'Professional Lighting Design',
+      'Architectural Lighting Design',
+      'LED Walls & Projection Mapping',
       'Sound Engineering',
-      'LED Screens & Projections',
-      'Special Effects',
-      'Technical Direction',
+      'Special Effects Integration',
+      'Technical Production Management',
     ],
     icon: Lightbulb,
-    image: 'https://images.unsplash.com/photo-1764884487727-4757bd493cda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbnRlcnRhaW5tZW50JTIwc2hvdyUyMHN0YWdlJTIwbGlnaHRzfGVufDF8fHx8MTc3MDU2ODY1NHww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
   },
   {
-    title: 'Photography & Videography',
-    description: 'Professional photography and videography services to capture every precious moment.',
+    title: 'Flagship Events & Product Launches',
+    description: 'High-impact launches and flagship events designed to showcase products, engage media, and elevate brand presence.',
     details: [
-      'Event Photography',
-      'Cinematic Videography',
-      'Drone Coverage',
-      'Live Streaming',
-      'Post-Production',
+      'Launch Event Concept & Design',
+      'Brand Experience Environments',
+      'Media & Guest Engagement',
+      'Immersive Installations',
+      'End-to-End Production Delivery',
     ],
     icon: Camera,
-    image: 'https://images.unsplash.com/photo-1711506119180-e08899c7cdb1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBpbmRpYW4lMjB3ZWRkaW5nJTIwY2VyZW1vbnklMjBsaWdodHN8ZW58MXx8fHwxNzcwNTY4NjUxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
   },
 ];
 
@@ -89,12 +89,13 @@ export function WhatWeDo() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1769018508631-fe4ebf3fba3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxncmFuZCUyMGV2ZW50JTIwdmVudWUlMjBsaWdodGluZ3xlbnwxfHx8fDE3NzA1Njg2NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            src="https://images.unsplash.com/photo-1769018508631-fe4ebf3fba3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
             alt="What We Do"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/70" />
         </div>
+
         <div className="relative z-10 text-center px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -105,6 +106,7 @@ export function WhatWeDo() {
           >
             What We Do
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,12 +129,10 @@ export function WhatWeDo() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
             >
               {/* Image */}
-              <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+              <div className={index % 2 !== 0 ? 'lg:order-2' : ''}>
                 <div className="relative h-[400px] lg:h-[500px] overflow-hidden">
                   <img 
                     src={service.image}
@@ -144,7 +144,7 @@ export function WhatWeDo() {
               </div>
 
               {/* Content */}
-              <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <div className={index % 2 !== 0 ? 'lg:order-1' : ''}>
                 <div className="flex items-center gap-4 mb-6">
                   <service.icon className="w-10 h-10 text-amber-600" />
                   <h2 
@@ -155,10 +155,7 @@ export function WhatWeDo() {
                   </h2>
                 </div>
                 
-                <p 
-                  className="text-neutral-300 text-lg mb-8 leading-relaxed"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
+                <p className="text-neutral-300 text-lg mb-8 leading-relaxed">
                   {service.description}
                 </p>
 
@@ -166,49 +163,13 @@ export function WhatWeDo() {
                   {service.details.map((detail, idx) => (
                     <div key={idx} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-amber-600 rounded-full" />
-                      <span 
-                        className="text-neutral-400"
-                        style={{ fontFamily: "'Inter', sans-serif" }}
-                      >
-                        {detail}
-                      </span>
+                      <span className="text-neutral-400">{detail}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-black py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 
-              className="text-4xl md:text-5xl text-white mb-6"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              Ready to Bring Your Vision to Life?
-            </h2>
-            <p 
-              className="text-neutral-400 text-lg mb-10"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Let's discuss how we can make your next event extraordinary
-            </p>
-            <button 
-              className="px-10 py-4 bg-amber-600 text-white hover:bg-amber-700 transition-all duration-300"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Get in Touch
-            </button>
-          </motion.div>
         </div>
       </section>
     </div>
