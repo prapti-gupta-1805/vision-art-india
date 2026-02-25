@@ -6,7 +6,7 @@ export function Hero() {
       {/* Hero Image with Dark Overlay */}
       <div className="absolute inset-0">
         <img 
-          src="https://images.unsplash.com/photo-1711506119180-e08899c7cdb1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBpbmRpYW4lMjB3ZWRkaW5nJTIwY2VyZW1vbnklMjBsaWdodHN8ZW58MXx8fHwxNzcwNTY4NjUxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+          src="/src/assets/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg" 
           alt="Luxury Event" 
           className="w-full h-full object-cover"
         />
@@ -34,14 +34,14 @@ export function Hero() {
             Where Vision Meets Celebration
           </p>
 
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-10 py-4 bg-transparent border-2 border-amber-600 text-amber-500 hover:bg-amber-600 hover:text-white transition-all duration-300"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Explore Our Work
-          </motion.button>
+          </motion.button> */}
         </motion.div>
       </div>
 

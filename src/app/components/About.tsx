@@ -24,15 +24,13 @@ export function About() {
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               <p>
-                We are storytellers of celebration, architects of emotion, and creators of unforgettable moments.
+              With over 10 years of experience in the audio-visual industry, Vision Art India is a trusted partner for event professionals looking for reliability, innovation, and flawless execution.
               </p>
-              
               <p>
-                With years of experience in large-scale event production, luxury weddings, and corporate experiences, we bring vision to life through meticulous planning, world-class execution, and a deep understanding of what makes moments truly memorable.
+              Our team is passionate about creating memorable experiences through technology, and we pride ourselves on being a one-stop solution for all your event technical needs.
               </p>
-              
               <p>
-                From intimate gatherings to grand spectacles, every event is a canvas for our passion and expertise.
+              We are committed to investing in the best AV equipment, tools, and training so we can continue to offer the highest standards of service.
               </p>
             </div>
           </motion.div>

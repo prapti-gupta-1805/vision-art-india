@@ -25,6 +25,11 @@ export function Navigation() {
             onClick={() => setOpen(false)}
             className="flex items-center gap-3"
           >
+            <img 
+              src="/favicon.png" 
+              alt="Vision Art India" 
+              className="h-8 md:h-10 w-auto"
+            />
             <span 
               className="text-2xl md:text-3xl text-amber-600"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}

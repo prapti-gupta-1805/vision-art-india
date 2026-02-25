@@ -3,9 +3,9 @@ import { Sparkles, Users, Briefcase, Music, Lightbulb } from 'lucide-react';
 
 const services = [
   {
-    title: 'Event Planning & Execution',
+    title: 'Fashion Week & Runway Shows',
     description: 'End-to-end conceptualization and flawless delivery of your vision',
-    image: 'https://images.unsplash.com/photo-1765277873753-63b431f3938e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxldmVudCUyMHByb2R1Y3Rpb24lMjBiYWNrc3RhZ2UlMjBzZXR1cHxlbnwxfHx8fDE3NzA1Njg2NTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
     icon: Sparkles,
   },
   {

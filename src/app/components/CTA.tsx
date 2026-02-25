@@ -35,14 +35,14 @@ export function CTA() {
             Every great event begins with a conversation. Share your vision with us, and let's bring it to life together.
           </p>
 
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-12 py-5 bg-amber-600 text-white hover:bg-amber-700 transition-all duration-300 text-lg"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Plan Your Event
-          </motion.button>
+          </motion.button> */}
         </motion.div>
       </div>
     </section>
