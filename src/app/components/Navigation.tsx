@@ -26,7 +26,7 @@ export function Navigation() {
             className="flex items-center gap-3"
           >
             <img 
-              src="/favicon.png" 
+              src="/images/logo.png" 
               alt="Vision Art India" 
               className="h-8 md:h-10 w-auto"
             />
