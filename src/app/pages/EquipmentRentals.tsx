@@ -147,7 +147,7 @@
 //             >
 //               {/* Category Header */}
 //               <div className="flex items-center gap-4 mb-8 pb-6 border-b border-neutral-800">
-//                 <category.icon className="w-10 h-10 text-amber-600" />
+//                 <category.icon className="w-10 h-10 text-[#F59E0B]" />
 //                 <h2 
 //                   className="text-3xl md:text-4xl text-white"
 //                   style={{ fontFamily: "'Cormorant Garamond', serif" }}
@@ -161,7 +161,7 @@
 //                 {category.items.map((item, idx) => (
 //                   <div 
 //                     key={idx}
-//                     className="border-l-2 border-amber-600 pl-6 py-2"
+//                     className="border-l-2 border-[#F59E0B] pl-6 py-2"
 //                   >
 //                     <h3 
 //                       className="text-xl text-white mb-2"
@@ -222,7 +222,7 @@
 //                 whileInView={{ opacity: 1, y: 0 }}
 //                 viewport={{ once: true }}
 //                 transition={{ duration: 0.6, delay: index * 0.1 }}
-//                 className="bg-neutral-950 border border-neutral-800 p-8 text-center hover:border-amber-600/50 transition-all duration-300"
+//                 className="bg-neutral-950 border border-neutral-800 p-8 text-center hover:border-[#F59E0B]/50 transition-all duration-300"
 //               >
 //                 <h3 
 //                   className="text-2xl text-white mb-4"
@@ -264,7 +264,7 @@
 //               Contact us with your event requirements and we'll provide a detailed rental quote
 //             </p>
 //             <button 
-//               className="px-10 py-4 bg-amber-600 text-white hover:bg-amber-700 transition-all duration-300"
+//               className="px-10 py-4 bg-[#F59E0B] text-white hover:bg-[#F59E0B]/90 transition-all duration-300"
 //               style={{ fontFamily: "'Inter', sans-serif" }}
 //             >
 //               Request Quote

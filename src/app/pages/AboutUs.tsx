@@ -71,20 +71,20 @@ export function AboutUs() {
 <section className="bg-neutral-950 py-28 px-6 relative overflow-hidden">
   {/* subtle glow */}
   <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-amber-600/10 blur-3xl rounded-full"></div>
+    <div className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F59E0B]/10 blur-3xl"></div>
   </div>
 
   <div className="max-w-3xl mx-auto relative z-10 text-center">
     
     <h2 
-      className="text-5xl md:text-6xl text-amber-600 mb-10"
+      className="mb-10 text-5xl text-[#F59E0B] md:text-6xl"
       style={{ fontFamily: "'Cormorant Garamond', serif" }}
     >
       Our Story
     </h2>
 
     {/* optional top accent instead of side line */}
-    <div className="w-16 h-[2px] bg-amber-600 mx-auto mb-10"></div>
+    <div className="mx-auto mb-10 h-[2px] w-16 bg-[#F59E0B]"></div>
 
     {/* highlighted line */}
     <p className="text-2xl text-white font-medium italic mb-8 leading-relaxed max-w-2xl mx-auto">
@@ -113,8 +113,14 @@ export function AboutUs() {
 </section>
 
       {/* Stats Section */}
-      <section className="bg-black py-24 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="major-panel bg-black py-24 px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-7xl rounded-[32px] border border-white/6 bg-white/[0.02] px-6 py-8 md:px-10"
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -123,10 +129,10 @@ export function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="interactive-surface-subtle rounded-2xl border border-transparent px-4 py-6 text-center"
               >
                 <div 
-                  className="text-5xl md:text-6xl text-amber-600 mb-3"
+                  className="mb-3 text-5xl text-[#F59E0B] md:text-6xl"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}
                 >
                   {stat.number}
@@ -140,12 +146,18 @@ export function AboutUs() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Our Values */}
-      <section className="bg-neutral-950 py-24 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="major-panel bg-neutral-950 py-24 px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-7xl"
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -175,9 +187,9 @@ export function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-black border border-neutral-900 p-8 text-center hover:border-amber-600/50 transition-all duration-300"
+                className="interactive-surface group rounded-2xl border border-neutral-900 bg-black p-8 text-center transition-all duration-300 hover:border-[#F59E0B]/50"
               >
-                <value.icon className="w-12 h-12 text-amber-600 mx-auto mb-6" />
+                <value.icon className="mx-auto mb-6 h-12 w-12 text-[#F59E0B] transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1" />
                 <h3 
                   className="text-2xl text-white mb-4"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}
@@ -193,7 +205,7 @@ export function AboutUs() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA Section */}
@@ -219,7 +231,7 @@ export function AboutUs() {
             </p>
             <Link 
               to="/contact"
-              className="inline-block px-10 py-4 bg-amber-600 text-white hover:bg-amber-700 transition-all duration-300"
+              className="interactive-button inline-block rounded-full bg-[#F59E0B] px-10 py-4 text-white transition-all duration-300 hover:bg-[#F59E0B]/90"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Start Your Journey

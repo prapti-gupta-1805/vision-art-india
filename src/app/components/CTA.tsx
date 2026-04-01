@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export function CTA() {
   return (
-    <section className="relative py-32 md:py-40 px-6 overflow-hidden">
+    <section className="major-panel relative overflow-hidden px-6 py-32 md:py-40">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -14,7 +14,13 @@ export function CTA() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 mx-auto max-w-4xl px-8 py-12 text-center md:px-12"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,13 +44,13 @@ export function CTA() {
           {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-12 py-5 bg-amber-600 text-white hover:bg-amber-700 transition-all duration-300 text-lg"
+            className="px-12 py-5 bg-[#F59E0B] text-white hover:bg-[#F59E0B]/90 transition-all duration-300 text-lg"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Plan Your Event
           </motion.button> */}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

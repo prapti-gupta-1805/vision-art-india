@@ -6,7 +6,7 @@ export function Hero() {
       {/* Hero Image with Dark Overlay */}
       <div className="absolute inset-0">
         <img 
-          src="/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg" 
+          src="/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).webp" 
           alt="Luxury Event" 
           className="w-full h-full object-cover"
         />
@@ -37,7 +37,7 @@ export function Hero() {
           {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-transparent border-2 border-amber-600 text-amber-500 hover:bg-amber-600 hover:text-white transition-all duration-300"
+            className="px-10 py-4 bg-transparent border-2 border-[#F59E0B] text-[#F59E0B] hover:bg-[#F59E0B] hover:text-white transition-all duration-300"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Explore Our Work

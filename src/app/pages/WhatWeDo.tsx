@@ -14,7 +14,7 @@ const services = [
       'Lighting & Visual Direction',
     ],
     icon: Sparkles,
-    image: '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).webp',
   },
   {
     title: 'Weddings & Celebrations',
@@ -27,7 +27,7 @@ const services = [
       'End-to-End Celebration Management',
     ],
     icon: Users,
-    image: '/images/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-02-25 at 11.24.00 PM.webp',
   },
   {
     title: 'Corporate Events',
@@ -40,7 +40,7 @@ const services = [
       'Executive Event Management',
     ],
     icon: Briefcase,
-    image: '/images/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-02-25 at 11.20.28 PM.webp',
   },
   {
     title: 'Entertainment & Stage Production',
@@ -53,7 +53,7 @@ const services = [
       'Live Performance Execution',
     ],
     icon: Music,
-    image: '/images/image.png',
+    image: '/images/image.webp',
   },
   {
     title: 'Visuals, Lighting & Sound',
@@ -66,7 +66,7 @@ const services = [
       'Technical Production Management',
     ],
     icon: Lightbulb,
-    image: '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.webp',
   },
   {
     title: 'Flagship Events & Product Launches',
@@ -79,7 +79,7 @@ const services = [
       'End-to-End Production Delivery',
     ],
     icon: Camera,
-    image: '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).webp',
   },
 ];
 
@@ -137,11 +137,11 @@ export function WhatWeDo() {
             >
               {/* Image */}
               <div className={index % 2 !== 0 ? 'lg:order-2' : ''}>
-                <div className="relative h-[400px] lg:h-[500px] overflow-hidden">
+                <div className="relative h-[400px] overflow-hidden rounded-2xl lg:h-[500px]">
                   <img 
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full rounded-2xl object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
                 </div>

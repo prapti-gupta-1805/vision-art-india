@@ -21,8 +21,14 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="bg-neutral-950 py-24 md:py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="major-panel bg-neutral-950 py-24 md:py-32 px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8 }}
+        className="mx-auto max-w-7xl"
+      >
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,7 +38,7 @@ export function Testimonials() {
           className="text-center mb-16"
         >
           <h2 
-            className="text-5xl md:text-6xl text-amber-600 mb-4"
+            className="mb-4 text-5xl text-[#F59E0B] md:text-6xl"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Client Stories
@@ -54,9 +60,9 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="bg-neutral-900 p-8 relative border border-neutral-800 hover:border-amber-600/50 transition-all duration-300"
+              className="interactive-surface group relative rounded-2xl border border-neutral-800 bg-neutral-900 p-8 transition-all duration-300 hover:border-[#F59E0B]/50"
             >
-              <Quote className="w-10 h-10 text-amber-600 mb-6 opacity-50" />
+              <Quote className="mb-6 h-10 w-10 text-[#F59E0B] opacity-50 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               
               <p 
                 className="text-neutral-300 text-lg mb-6 leading-relaxed italic"
@@ -82,7 +88,7 @@ export function Testimonials() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

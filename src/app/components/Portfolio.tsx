@@ -4,34 +4,32 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // List of all images from the public/images folder (excluding logo and videos)
 const portfolioImagesUnshuffled = [
-  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (2).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (3).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM (2).jpeg',
-  '/images/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM (1).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (1).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.14.32 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM (3).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
-  '/images/WhatsApp Image 2026-02-25 at 11.23.59 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (3).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (4).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM (2).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM (2).jpeg',
-  '/images/WhatsApp Image 2026-02-25 at 11.24.27 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM (1).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM (1).jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (2).jpeg',
-  '/images/WhatsApp Image 2026-02-25 at 11.24.01 PM.jpeg',
-  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM.jpeg',
-  '/images/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (2).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (3).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM (2).webp',
+  '/images/WhatsApp Image 2026-02-25 at 11.24.00 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM (1).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (1).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.32 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM (3).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.webp',
+  '/images/WhatsApp Image 2026-02-25 at 11.23.59 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (3).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (4).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM (2).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM (1).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM (1).webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (2).webp',
+  '/images/WhatsApp Image 2026-02-25 at 11.24.01 PM.webp',
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM.webp',
+  '/images/WhatsApp Image 2026-02-25 at 11.20.28 PM.webp',
 ];
 
 // Fisher-Yates shuffle algorithm
@@ -73,8 +71,14 @@ export function Portfolio() {
   };
 
   return (
-    <section className="bg-black py-24 md:py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="major-panel bg-black py-24 md:py-32 px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8 }}
+        className="mx-auto max-w-7xl"
+      >
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -103,16 +107,16 @@ export function Portfolio() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full overflow-hidden rounded-lg group"
+          className="interactive-surface group relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10"
         >
           {/* Image Container */}
-          <div className="relative w-full aspect-video md:aspect-auto md:h-96 lg:h-[500px]">
+          <div className="relative w-full aspect-video">
             {portfolioImages.map((image, index) => (
               <motion.img
                 key={index}
                 src={image}
                 alt={`Portfolio ${index + 1}`}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 h-full w-full rounded-2xl object-cover"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: index === currentIndex ? 1 : 0 }}
                 transition={{ duration: 0.8 }}
@@ -123,7 +127,7 @@ export function Portfolio() {
           {/* Left Navigation Button */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-amber-600 hover:bg-amber-700 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="interactive-button absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-[#F59E0B] p-3 text-white opacity-0 transition-all duration-300 hover:bg-[#F59E0B]/90 group-hover:opacity-100"
             aria-label="Previous image"
           >
             <ChevronLeft size={24} />
@@ -132,14 +136,14 @@ export function Portfolio() {
           {/* Right Navigation Button */}
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-amber-600 hover:bg-amber-700 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="interactive-button absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-[#F59E0B] p-3 text-white opacity-0 transition-all duration-300 hover:bg-[#F59E0B]/90 group-hover:opacity-100"
             aria-label="Next image"
           >
             <ChevronRight size={24} />
           </button>
 
           {/* Image Counter */}
-          <div className="absolute bottom-4 right-4 z-20 bg-black/60 text-white px-4 py-2 rounded-lg text-sm font-medium">
+          <div className="absolute bottom-4 right-4 z-20 rounded-xl bg-black/60 px-4 py-2 text-sm font-medium text-white">
             {currentIndex + 1} / {portfolioImages.length}
           </div>
 
@@ -153,9 +157,9 @@ export function Portfolio() {
                   setAutoPlay(false);
                   setTimeout(() => setAutoPlay(true), 8000);
                 }}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`interactive-button h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'bg-amber-600 w-8'
+                    ? 'bg-[#F59E0B] w-8'
                     : 'bg-white/50 w-2 hover:bg-white/75'
                 }`}
                 aria-label={`Go to image ${index + 1}`}
@@ -163,7 +167,7 @@ export function Portfolio() {
             ))}
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

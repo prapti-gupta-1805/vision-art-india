@@ -11,14 +11,14 @@ export function Footer() {
           {/* Brand */}
           <div>
             <h3
-              className="text-3xl text-amber-600 mb-4"
+              className="mb-4 text-3xl text-[#F59E0B]"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Vision Art India
             </h3>
 
             {/* Since Badge */}
-            <div className="inline-block text-xs tracking-widest text-amber-600 border border-amber-600 px-3 py-1 mb-4">
+            <div className="mb-4 inline-block rounded-2xl border border-[#F59E0B] px-3 py-1 text-xs tracking-widest text-[#F59E0B]">
               Serving Since 2016
             </div>
 
@@ -33,7 +33,7 @@ export function Footer() {
                 href="https://www.facebook.com/VISIONARTINDIA.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center border border-neutral-700 text-neutral-400 hover:text-amber-600 hover:border-amber-600 transition"
+                className="flex h-9 w-9 items-center justify-center border border-neutral-700 text-neutral-400 transition hover:border-[#F59E0B] hover:text-[#F59E0B]"
                 aria-label="Facebook"
               >
                 <FaFacebookF />
@@ -43,7 +43,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/vision-art-india"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center border border-neutral-700 text-neutral-400 hover:text-amber-600 hover:border-amber-600 transition"
+                className="flex h-9 w-9 items-center justify-center border border-neutral-700 text-neutral-400 transition hover:border-[#F59E0B] hover:text-[#F59E0B]"
                 aria-label="LinkedIn"
               >
                 <FaLinkedinIn />

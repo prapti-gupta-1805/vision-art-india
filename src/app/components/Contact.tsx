@@ -54,8 +54,14 @@ export function Contact() {
     }
   };
   return (
-    <section className="bg-black py-24 md:py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="major-panel bg-black py-24 md:py-32 px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8 }}
+        className="mx-auto max-w-7xl rounded-[32px] border border-white/6 bg-white/[0.02] px-6 py-8 md:px-10 md:py-10"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Left Column - Contact Information */}
           <motion.div
@@ -80,7 +86,7 @@ export function Contact() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <Phone className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+                <Phone className="mt-1 h-6 w-6 flex-shrink-0 text-[#F59E0B]" />
                 <div>
                   <p 
                     className="text-white text-lg mb-1"
@@ -104,7 +110,7 @@ export function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <Mail className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+                <Mail className="mt-1 h-6 w-6 flex-shrink-0 text-[#F59E0B]" />
                 <div>
                   <p 
                     className="text-white text-lg mb-1"
@@ -122,7 +128,7 @@ export function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+                <MapPin className="mt-1 h-6 w-6 flex-shrink-0 text-[#F59E0B]" />
                 <div>
                   <p 
                     className="text-white text-lg mb-1"
@@ -153,7 +159,7 @@ export function Contact() {
                   href="https://www.facebook.com/VISIONARTINDIA.in" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 border border-neutral-700 flex items-center justify-center hover:border-amber-600 hover:text-amber-600 text-neutral-400 transition-all duration-300"
+                  className="interactive-button flex h-12 w-12 items-center justify-center rounded-full border border-neutral-700 text-neutral-400 transition-all duration-300 hover:border-[#F59E0B] hover:text-[#F59E0B]"
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
@@ -161,7 +167,7 @@ export function Contact() {
                   href="https://www.linkedin.com/company/vision-art-india" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 border border-neutral-700 flex items-center justify-center hover:border-amber-600 hover:text-amber-600 text-neutral-400 transition-all duration-300"
+                  className="interactive-button flex h-12 w-12 items-center justify-center rounded-full border border-neutral-700 text-neutral-400 transition-all duration-300 hover:border-[#F59E0B] hover:text-[#F59E0B]"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -175,10 +181,10 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-neutral-950 p-8 md:p-10 border border-neutral-800"
+            className="interactive-surface rounded-2xl border border-neutral-800 bg-neutral-950 p-8 md:p-10"
           >
             {submitted && (
-              <div className="mb-6 p-4 bg-green-900/20 border border-green-600 text-green-400 rounded">
+              <div className="mb-6 rounded-xl border border-green-600 bg-green-900/20 p-4 text-green-400">
                 <p style={{ fontFamily: "'Inter', sans-serif" }}>
                   ✓ Thank you! Your message has been sent successfully.
                 </p>
@@ -186,7 +192,7 @@ export function Contact() {
             )}
 
             {error && (
-              <div className="mb-6 p-4 bg-red-900/20 border border-red-600 text-red-400 rounded">
+              <div className="mb-6 rounded-xl border border-red-600 bg-red-900/20 p-4 text-red-400">
                 <p style={{ fontFamily: "'Inter', sans-serif" }}>
                   {error}
                 </p>
@@ -208,7 +214,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-black border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-amber-600 transition-colors"
+                  className="w-full rounded-xl border border-neutral-800 bg-black px-4 py-3 text-white transition-all duration-300 focus:border-[#F59E0B] focus:outline-none focus:shadow-[0_0_0_1px_rgba(245,158,11,0.45),0_0_24px_rgba(245,158,11,0.14)] hover:border-neutral-700"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 />
               </div>
@@ -227,7 +233,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-black border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-amber-600 transition-colors"
+                  className="w-full rounded-xl border border-neutral-800 bg-black px-4 py-3 text-white transition-all duration-300 focus:border-[#F59E0B] focus:outline-none focus:shadow-[0_0_0_1px_rgba(245,158,11,0.45),0_0_24px_rgba(245,158,11,0.14)] hover:border-neutral-700"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 />
               </div>
@@ -245,7 +251,7 @@ export function Contact() {
                   id="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full bg-black border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-amber-600 transition-colors"
+                  className="w-full rounded-xl border border-neutral-800 bg-black px-4 py-3 text-white transition-all duration-300 focus:border-[#F59E0B] focus:outline-none focus:shadow-[0_0_0_1px_rgba(245,158,11,0.45),0_0_24px_rgba(245,158,11,0.14)] hover:border-neutral-700"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 />
               </div>
@@ -264,7 +270,7 @@ export function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full bg-black border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-amber-600 transition-colors resize-none"
+                  className="w-full resize-none rounded-xl border border-neutral-800 bg-black px-4 py-3 text-white transition-all duration-300 focus:border-[#F59E0B] focus:outline-none focus:shadow-[0_0_0_1px_rgba(245,158,11,0.45),0_0_24px_rgba(245,158,11,0.14)] hover:border-neutral-700"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 ></textarea>
               </div>
@@ -272,7 +278,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-amber-600 text-white py-4 hover:bg-amber-700 disabled:bg-amber-600/50 disabled:cursor-not-allowed transition-all duration-300"
+                className="interactive-button w-full rounded-full bg-[#F59E0B] py-4 text-white transition-all duration-300 hover:bg-[#F59E0B]/90 disabled:cursor-not-allowed disabled:bg-[#F59E0B]/50"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {loading ? 'Sending...' : 'Send Message'}
@@ -280,7 +286,7 @@ export function Contact() {
             </form>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
