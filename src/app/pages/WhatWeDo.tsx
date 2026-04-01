@@ -13,7 +13,7 @@ const services = [
       'Lighting & Visual Direction',
     ],
     icon: Sparkles,
-    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
   },
   {
     title: 'Weddings & Celebrations',
@@ -26,7 +26,7 @@ const services = [
       'End-to-End Celebration Management',
     ],
     icon: Users,
-    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
   },
   {
     title: 'Corporate Events',
@@ -39,7 +39,7 @@ const services = [
       'Executive Event Management',
     ],
     icon: Briefcase,
-    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
   },
   {
     title: 'Entertainment & Stage Production',
@@ -52,7 +52,7 @@ const services = [
       'Live Performance Execution',
     ],
     icon: Music,
-    image: '/src/assets/image.png',
+    image: '/images/image.png',
   },
   {
     title: 'Visuals, Lighting & Sound',
@@ -65,7 +65,7 @@ const services = [
       'Technical Production Management',
     ],
     icon: Lightbulb,
-    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
   },
   {
     title: 'Flagship Events & Product Launches',
@@ -78,7 +78,7 @@ const services = [
       'End-to-End Production Delivery',
     ],
     icon: Camera,
-    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
   },
 ];
 

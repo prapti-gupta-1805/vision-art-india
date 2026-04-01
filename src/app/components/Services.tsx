@@ -5,38 +5,38 @@ const services = [
   {
     title: 'Fashion Week & Runway Shows',
     description: 'Complete runway production including stage design, model coordination, choreography, lighting, and show execution',
-    image: '/src/assets/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
     icon: Sparkles,
   },
   {
     title: 'Weddings & Celebrations',
     description: 'Bespoke wedding and celebration experiences with curated décor, lighting, entertainment, and seamless event management',
-    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
     icon: Users,
   },
   {
     title: 'Corporate Events',
     description: 'Strategic corporate event solutions including conferences, award nights, brand showcases, and executive experiences',
-    image: '/src/assets/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
     icon: Briefcase,
   },
   {
     title: 'Entertainment & Stage Production',
     description: 'Full-scale stage production for concerts, cultural shows, and live performances with creative and technical direction',
-    image: 'src/assets/image.png',
+    image: '/images/image.png',
     icon: Music,
   },
   {
     title: 'Visuals, Lighting & Sound',
     description: 'Advanced AV solutions, architectural lighting, LED visuals, and sound engineering that transform event environments',
-    image: 'src/assets/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
     icon: Lightbulb,
   },
 
     {
     title: 'Flagship Events & Product Launches',
     description: 'High-impact launches and flagship events designed to showcase products, engage media, and elevate brand presence',
-    image: 'src/assets/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
     icon: Music,
   }
 ];

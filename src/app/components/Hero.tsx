@@ -6,7 +6,7 @@ export function Hero() {
       {/* Hero Image with Dark Overlay */}
       <div className="absolute inset-0">
         <img 
-          src="/src/assets/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg" 
+          src="/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg" 
           alt="Luxury Event" 
           className="w-full h-full object-cover"
         />
