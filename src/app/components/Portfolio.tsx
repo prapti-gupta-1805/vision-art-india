@@ -1,47 +1,76 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const portfolioItems = [
-  {
-    category: 'Weddings',
-    image: 'https://images.unsplash.com/photo-1732382643619-872165f61891?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjB3ZWRkaW5nJTIwbWFuZGFwJTIwZGVjb3JhdGlvbnxlbnwxfHx8fDE3NzA0ODU3MDV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    title: 'Royal Heritage Wedding',
-  },
-  {
-    category: 'Corporate',
-    image: 'https://images.unsplash.com/photo-1768508947825-0a63f7c46a2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBnYWxhJTIwZGlubmVyJTIwZXZlbnR8ZW58MXx8fHwxNzcwNDc5NDkwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    title: 'Corporate Gala Evening',
-  },
-  {
-    category: 'Entertainment',
-    image: 'https://images.unsplash.com/photo-1566735355835-bddb43dc3f63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsaXZlJTIwY29uY2VydCUyMHN0YWdlJTIwcGVyZm9ybWFuY2V8ZW58MXx8fHwxNzcwNTY4NjUzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    title: 'Live Concert Production',
-  },
-  {
-    category: 'Weddings',
-    image: 'https://images.unsplash.com/photo-1652492892191-487055a9b6bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwY2VsZWJyYXRpb24lMjBjcm93ZCUyMGRhbmNpbmd8ZW58MXx8fHwxNzcwNTY4NjUyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    title: 'Grand Celebration',
-  },
-  {
-    category: 'Entertainment',
-    image: 'https://images.unsplash.com/photo-1764884487727-4757bd493cda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbnRlcnRhaW5tZW50JTIwc2hvdyUyMHN0YWdlJTIwbGlnaHRzfGVufDF8fHx8MTc3MDU2ODY1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    title: 'Stage Production',
-  },
-  {
-    category: 'Weddings',
-    image: 'https://images.unsplash.com/photo-1769812343322-f4a6e73c8aa7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwZXZlbnQlMjBkZWNvciUyMGZsb3dlcnN8ZW58MXx8fHwxNzcwNTY4NjUzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    title: 'Elegant Decor Setup',
-  },
+// List of all images from the public/images folder (excluding logo and videos)
+const portfolioImagesUnshuffled = [
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (2).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (3).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM (2).jpeg',
+  '/images/WhatsApp Image 2026-02-25 at 11.24.00 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM (1).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (1).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (1).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.32 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM (3).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.jpeg',
+  '/images/WhatsApp Image 2026-02-25 at 11.23.59 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM (3).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (4).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM (1).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM (2).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM (2).jpeg',
+  '/images/WhatsApp Image 2026-02-25 at 11.24.27 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM (1).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.15.29 PM (1).jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM (2).jpeg',
+  '/images/WhatsApp Image 2026-02-25 at 11.24.01 PM.jpeg',
+  '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM.jpeg',
+  '/images/WhatsApp Image 2026-02-25 at 11.20.28 PM.jpeg',
 ];
 
-const categories = ['All', 'Weddings', 'Corporate', 'Entertainment'];
+// Fisher-Yates shuffle algorithm
+const shuffleArray = (array: string[]) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 export function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const portfolioImages = useMemo(() => shuffleArray(portfolioImagesUnshuffled), []);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
 
-  const filteredItems = activeCategory === 'All' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeCategory);
+  // Auto-play slideshow
+  useEffect(() => {
+    if (!autoPlay) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % portfolioImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [autoPlay]);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + portfolioImages.length) % portfolioImages.length);
+    setAutoPlay(false);
+    setTimeout(() => setAutoPlay(true), 8000); // Resume auto-play after 8 seconds
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % portfolioImages.length);
+    setAutoPlay(false);
+    setTimeout(() => setAutoPlay(true), 8000); // Resume auto-play after 8 seconds
+  };
 
   return (
     <section className="bg-black py-24 md:py-32 px-6">
@@ -68,67 +97,72 @@ export function Portfolio() {
           </p>
         </motion.div>
 
-        {/* Category Filter */}
+        {/* Slideshow */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          className="relative w-full overflow-hidden rounded-lg group"
         >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2 border transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-amber-600 border-amber-600 text-white'
-                  : 'bg-transparent border-neutral-700 text-neutral-400 hover:border-amber-600 hover:text-amber-600'
-              }`}
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item, index) => (
-            <motion.div
-              key={`${item.title}-${index}`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden cursor-pointer h-80"
-            >
-              <img 
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          {/* Image Container */}
+          <div className="relative w-full aspect-video md:aspect-auto md:h-96 lg:h-[500px]">
+            {portfolioImages.map((image, index) => (
+              <motion.img
+                key={index}
+                src={image}
+                alt={`Portfolio ${index + 1}`}
+                className="absolute inset-0 w-full h-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: index === currentIndex ? 1 : 0 }}
+                transition={{ duration: 0.8 }}
               />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                <div>
-                  <p 
-                    className="text-amber-600 text-sm mb-2"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
-                  >
-                    {item.category}
-                  </p>
-                  <h3 
-                    className="text-white text-2xl"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                  >
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          {/* Left Navigation Button */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-amber-600 hover:bg-amber-700 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          {/* Right Navigation Button */}
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-amber-600 hover:bg-amber-700 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            aria-label="Next image"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Image Counter */}
+          <div className="absolute bottom-4 right-4 z-20 bg-black/60 text-white px-4 py-2 rounded-lg text-sm font-medium">
+            {currentIndex + 1} / {portfolioImages.length}
+          </div>
+
+          {/* Dots Navigation */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2 flex-wrap justify-center max-w-xs">
+            {portfolioImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setAutoPlay(false);
+                  setTimeout(() => setAutoPlay(true), 8000);
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-amber-600 w-8'
+                    : 'bg-white/50 w-2 hover:bg-white/75'
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

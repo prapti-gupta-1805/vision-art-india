@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { Award, Users, Heart, TrendingUp } from 'lucide-react';
 
 const values = [
@@ -26,8 +27,8 @@ const values = [
 
 const stats = [
   { number: '500+', label: 'Events Delivered' },
-  { number: '15+', label: 'Years Experience' },
-  { number: '50+', label: 'Team Members' },
+  { number: '10+', label: 'Years Experience' },
+  { number: '25+', label: 'Team Members' },
   { number: '100%', label: 'Client Satisfaction' },
 ];
 
@@ -61,71 +62,55 @@ export function AboutUs() {
             className="text-xl text-neutral-300 max-w-3xl mx-auto"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            Creating extraordinary experiences since 2009
+            Creating extraordinary experiences since 2016
           </motion.p>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="bg-neutral-950 py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 
-                className="text-4xl md:text-5xl text-amber-600 mb-8"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              >
-                Our Story
-              </h2>
-              
-              <div 
-                className="space-y-6 text-neutral-300 text-lg leading-relaxed"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                <p>
-                  Vision Art India was born from a simple belief: that every celebration deserves 
-                  to be extraordinary. What started as a small team of passionate event enthusiasts 
-                  has grown into one of India's most trusted names in event production and entertainment.
-                </p>
-                
-                <p>
-                  Over the years, we've had the privilege of bringing countless visions to life—from 
-                  intimate family celebrations to large-scale corporate events and spectacular entertainment 
-                  productions. Each event has taught us something new, refined our craft, and strengthened 
-                  our commitment to excellence.
-                </p>
-                
-                <p>
-                  Today, we stand as a full-service event production company with a reputation built on 
-                  creativity, reliability, and an unwavering dedication to creating memories that last 
-                  a lifetime.
-                </p>
-              </div>
-            </motion.div>
+<section className="bg-neutral-950 py-28 px-6 relative overflow-hidden">
+  {/* subtle glow */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-amber-600/10 blur-3xl rounded-full"></div>
+  </div>
 
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative h-[500px]"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1711506119180-e08899c7cdb1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBpbmRpYW4lMjB3ZWRkaW5nJTIwY2VyZW1vbnklMjBsaWdodHN8ZW58MXx8fHwxNzcwNTY4NjUxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Our Story"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+  <div className="max-w-3xl mx-auto relative z-10 text-center">
+    
+    <h2 
+      className="text-5xl md:text-6xl text-amber-600 mb-10"
+      style={{ fontFamily: "'Cormorant Garamond', serif" }}
+    >
+      Our Story
+    </h2>
+
+    {/* optional top accent instead of side line */}
+    <div className="w-16 h-[2px] bg-amber-600 mx-auto mb-10"></div>
+
+    {/* highlighted line */}
+    <p className="text-2xl text-white font-medium italic mb-8 leading-relaxed max-w-2xl mx-auto">
+      Vision Art India was born from a simple belief: that every celebration deserves to be extraordinary.
+    </p>
+
+    {/* original text */}
+    <div 
+      className="space-y-6 text-neutral-400 text-lg leading-relaxed max-w-2xl mx-auto"
+      style={{ fontFamily: "'Inter', sans-serif" }}
+    >
+      <p>
+        What started as a small team of passionate event enthusiasts has grown into one of India's most trusted names in event production and entertainment.
+      </p>
+      
+      <p>
+        Over the years, we've had the privilege of bringing countless visions to life—from intimate family celebrations to large-scale corporate events and spectacular entertainment productions. Each event has taught us something new, refined our craft, and strengthened our commitment to excellence.
+      </p>
+      
+      <p>
+        Today, we stand as a full-service event production company with a reputation built on creativity, reliability, and an unwavering dedication to creating memories that last a lifetime.
+      </p>
+    </div>
+
+  </div>
+</section>
 
       {/* Stats Section */}
       <section className="bg-black py-24 px-6">
@@ -211,49 +196,6 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="bg-black py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 
-              className="text-5xl md:text-6xl text-white mb-6"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              Our Team
-            </h2>
-            <p 
-              className="text-neutral-400 text-lg max-w-3xl mx-auto"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              A diverse team of event planners, designers, technicians, and creative professionals 
-              united by a shared passion for excellence. From concept to execution, we work together 
-              to ensure every detail is perfect.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative h-[400px] overflow-hidden"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1769018508631-fe4ebf3fba3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxncmFuZCUyMGV2ZW50JTIwdmVudWUlMjBsaWdodGluZ3xlbnwxfHx8fDE3NzA1Njg2NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="Our Team"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="bg-neutral-950 py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
@@ -275,12 +217,13 @@ export function AboutUs() {
             >
               Join our family of satisfied clients and let us create something extraordinary for you
             </p>
-            <button 
-              className="px-10 py-4 bg-amber-600 text-white hover:bg-amber-700 transition-all duration-300"
+            <Link 
+              to="/contact"
+              className="inline-block px-10 py-4 bg-amber-600 text-white hover:bg-amber-700 transition-all duration-300"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Start Your Journey
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>

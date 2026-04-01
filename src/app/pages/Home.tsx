@@ -10,8 +10,8 @@ export function Home() {
     <>
       <Hero />
       <About />
-      <Services />
       <Portfolio />
+      <Services />
       <Testimonials />
       <CTA />
     </>

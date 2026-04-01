@@ -9,9 +9,7 @@ export function Navigation() {
   const menuItems = [
     { name: 'Home', path: '/' },
     { name: 'What We Do', path: '/what-we-do' },
-    { name: 'Projects', path: '/projects' },
     { name: 'Equipment Rentals', path: '/equipment-rentals' },
-    { name: 'Install', path: '/products' },
     { name: 'About Us', path: '/about-us' },
   ];
 

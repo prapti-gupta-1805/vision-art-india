@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Sparkles, Users, Briefcase, Music, Lightbulb, Camera } from 'lucide-react';
+import { Portfolio } from '../components/Portfolio';
 
 const services = [
   {
@@ -118,6 +119,9 @@ export function WhatWeDo() {
           </motion.p>
         </div>
       </section>
+
+      {/* Portfolio Slideshow */}
+      <Portfolio />
 
       {/* Services Detail Section */}
       <section className="bg-neutral-950 py-24 px-6">

@@ -1,6 +1,10 @@
 home:
 make slideshow instead of folders
 testimonials
+
 projects:
 slideshow instead of folders
 Equipment Rentals, Install, About Us and Contact Us major changes.
+
+
+note: testimonials are mock rn
