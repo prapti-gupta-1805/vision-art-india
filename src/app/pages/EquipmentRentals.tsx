@@ -1,368 +1,451 @@
-import { useEffect, useMemo, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { BadgeCheck, ChevronRight, Headphones, Lightbulb, MonitorSpeaker, SlidersHorizontal, Wrench } from 'lucide-react';
+import { ChevronDown, ChevronRight, Grid2x2, ListFilter, Search, Star } from 'lucide-react';
+
+type RentalCategory = {
+  name: string;
+  count: number;
+  children?: { name: string; count: number }[];
+};
 
 type RentalProduct = {
   slug: string;
   name: string;
-  brand: string;
-  category: string;
   image: string;
-  shortDescription: string;
+  category: string;
+  rating: string;
+  reviews: string;
+  price: string;
   summary: string;
-  idealFor: string;
-  priceLabel: string;
-  setupLabel: string;
-  ratingLabel: string;
-  features: string[];
-  support: string[];
+  availability: string;
 };
+
+const rentalCategories: RentalCategory[] = [
+  { name: 'Batteries', count: 3 },
+  { name: 'Camera Accessories', count: 12 },
+  {
+    name: 'Camera Rental',
+    count: 18,
+    children: [
+      { name: 'Canon', count: 6 },
+      { name: 'Sony', count: 8 },
+      { name: 'Blackmagic', count: 4 },
+    ],
+  },
+  { name: 'Lighting Rental', count: 14 },
+  { name: 'Lenses Rental', count: 22 },
+  { name: 'Microphones', count: 9 },
+  { name: 'Mixers', count: 5 },
+  { name: 'Monitors', count: 4 },
+  { name: 'Tripods & Support', count: 11 },
+];
 
 const rentalProducts: RentalProduct[] = [
   {
-    slug: 'led-video-wall-package',
-    name: 'LED Video Wall Package',
-    brand: 'Vision Art Pro',
-    category: 'Display Systems',
+    slug: 'sony-fx3-camera-rental',
+    name: 'Sony FX3 Cinema Line Camera on Rent',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.14.33 PM.webp',
+    category: 'Camera Rental',
+    rating: '4.9',
+    reviews: '17 reviews',
+    price: '₹3,500 / day',
+    summary: 'Compact full-frame cinema camera package with cage, batteries, and media for commercial shoots and interviews.',
+    availability: 'Available for Delhi NCR pickup',
+  },
+  {
+    slug: 'sony-a7siii-rental',
+    name: 'Sony A7S III Camera Rental',
     image: '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM.webp',
-    shortDescription: 'Modular LED wall setup for stage backdrops, launches, and conference screens.',
-    summary:
-      'A clean, high-brightness display package designed for indoor brand events, weddings, live performances, and stage presentations.',
-    idealFor: 'Product launches, wedding stages, award nights, corporate conferences',
-    priceLabel: 'Custom quote by event size',
-    setupLabel: 'Installation available in 24-48 hours',
-    ratingLabel: 'Popular for launch backdrops',
-    features: ['Modular cabinet layout', 'Processor and signal routing included', 'Indoor event brightness tuning'],
-    support: ['Delivery and pickup coordination', 'On-site wall assembly', 'Operator support available'],
+    category: 'Camera Rental',
+    rating: '4.8',
+    reviews: '12 reviews',
+    price: '₹2,800 / day',
+    summary: 'Low-light friendly hybrid camera setup suited for wedding films, events, and fast-turnaround production work.',
+    availability: 'Same-day dispatch possible',
   },
   {
-    slug: 'concert-sound-rig',
-    name: 'Concert Sound Rig',
-    brand: 'Vision Art Audio',
-    category: 'Audio',
+    slug: 'canon-r5c-rental',
+    name: 'Canon R5 C Camera Body Rental',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.14.34 PM (1).webp',
+    category: 'Camera Rental',
+    rating: '4.7',
+    reviews: '8 reviews',
+    price: '₹4,200 / day',
+    summary: '8K-ready hybrid cinema body for premium branded content, interviews, and high-detail video production.',
+    availability: 'Book 24 hours in advance',
+  },
+  {
+    slug: 'nanlite-forza-rental',
+    name: 'Nanlite Forza 500 Lighting Kit on Rent',
     image: '/images/WhatsApp Image 2026-01-13 at 12.16.24 PM.webp',
-    shortDescription: 'Full-range PA package with console, microphones, monitors, and tuning support.',
-    summary:
-      'Built for clear speech and high-energy music playback, this package works well for medium to large-format events that need reliable front-of-house coverage.',
-    idealFor: 'Live shows, sangeet nights, corporate events, public gatherings',
-    priceLabel: 'Rental pricing on request',
-    setupLabel: 'Soundcheck and tuning included',
-    ratingLabel: 'Booked often for live performances',
-    features: ['Line-array style coverage options', 'Wireless and wired microphone support', 'FOH console and monitor sends'],
-    support: ['System setup and soundcheck', 'Live engineer on request', 'Backup signal accessories'],
+    category: 'Lighting Rental',
+    rating: '4.8',
+    reviews: '11 reviews',
+    price: '₹2,200 / day',
+    summary: 'Daylight COB fixture with stand, softbox, and power accessories for interviews, sets, and studio lighting.',
+    availability: 'Operator support available',
   },
   {
-    slug: 'moving-head-lighting-kit',
-    name: 'Moving Head Lighting Kit',
-    brand: 'Vision Art Lights',
-    category: 'Lighting',
+    slug: 'aputure-600d-rental',
+    name: 'Aputure 600D Pro Light Rental',
+    image: '/images/WhatsApp Image 2026-01-13 at 12.19.47 PM.webp',
+    category: 'Lighting Rental',
+    rating: '5.0',
+    reviews: '9 reviews',
+    price: '₹3,000 / day',
+    summary: 'High-output professional LED with weather-resistant ballast and cinematic punch for larger setups.',
+    availability: 'Frequently booked for ad films',
+  },
+  {
+    slug: 'wireless-mic-kit-rental',
+    name: 'Wireless Microphone Kit Rental',
     image: '/images/WhatsApp Image 2026-01-13 at 12.19.48 PM.webp',
-    shortDescription: 'Stage lighting package with moving heads, pars, haze, and DMX control.',
-    summary:
-      'A flexible lighting bundle that adds color, movement, and depth to performances and ceremonial moments without overcomplicating setup.',
-    idealFor: 'Fashion shows, receptions, concerts, cultural programs',
-    priceLabel: 'Flexible by fixture count',
-    setupLabel: 'Programming support available',
-    ratingLabel: 'Great for dynamic stage looks',
-    features: ['Beam and wash combinations', 'Scene-based programming', 'Truss-ready mounting support'],
-    support: ['Fixture patching and aiming', 'Programming assistance', 'Power and cable planning'],
+    category: 'Microphones',
+    rating: '4.6',
+    reviews: '14 reviews',
+    price: '₹900 / day',
+    summary: 'Dual-channel wireless audio set for interviews, presenters, and event coverage with clean dialogue capture.',
+    availability: 'Ready with charging case',
   },
   {
-    slug: 'stage-and-truss-setup',
-    name: 'Stage and Truss Setup',
-    brand: 'Vision Art Structures',
-    category: 'Installation',
+    slug: 'cine-lens-set-rental',
+    name: 'Cine Prime Lens Set on Rent',
     image: '/images/WhatsApp Image 2026-01-13 at 12.21.50 PM.webp',
-    shortDescription: 'Platform, riser, and truss package for stable event builds and scenic installs.',
-    summary:
-      'Designed for practical event execution, this package covers the structural side of the show with neat stage decks, truss spans, and safe installation flow.',
-    idealFor: 'Runway shows, press meets, ceremonies, exhibition builds',
-    priceLabel: 'Site-based estimate',
-    setupLabel: 'Crew and load-in planning included',
-    ratingLabel: 'Reliable for fast venue turnarounds',
-    features: ['Modular stage deck sizing', 'Front fascia finishing', 'Rigging-compatible truss sections'],
-    support: ['Installation crew included', 'Venue layout coordination', 'Load-in and strike planning'],
+    category: 'Lenses Rental',
+    rating: '4.9',
+    reviews: '6 reviews',
+    price: '₹5,500 / day',
+    summary: 'Matched cinema prime set for narrative shoots and commercials where controlled optics and consistency matter.',
+    availability: 'Delivery by request',
+  },
+  {
+    slug: 'field-monitor-rental',
+    name: 'Director Field Monitor Rental',
+    image: '/images/WhatsApp Image 2026-02-25 at 11.23.59 PM.webp',
+    category: 'Monitors',
+    rating: '4.7',
+    reviews: '5 reviews',
+    price: '₹1,200 / day',
+    summary: 'Bright production monitor kit for focus checks, client view, and on-set framing confidence.',
+    availability: 'Includes sunhood and cables',
   },
 ];
 
-const categoryIcons = {
-  Audio: Headphones,
-  Lighting: Lightbulb,
-  Installation: Wrench,
-  'Display Systems': MonitorSpeaker,
-} satisfies Record<string, typeof MonitorSpeaker>;
+const popularTags = ['Camera rental', 'Lighting rental', 'Sony', 'Canon', 'Lenses', 'Studio gear'];
 
 export function EquipmentRentals() {
   const { slug } = useParams<{ slug?: string }>();
-  const expandedRef = useRef<HTMLElement | null>(null);
-  const resultsCount = rentalProducts.length;
-
-  const selectedProduct = useMemo(
-    () => rentalProducts.find((product) => product.slug === slug) ?? null,
-    [slug],
-  );
-
-  useEffect(() => {
-    if (!slug || !selectedProduct || !expandedRef.current) {
-      return;
-    }
-
-    expandedRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [selectedProduct, slug]);
+  const selectedProduct = rentalProducts.find((product) => product.slug === slug) ?? null;
 
   return (
     <div className="bg-black pt-20 text-white">
-      <section className="mx-auto max-w-7xl px-6 py-10">
-        <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
-          <aside className="h-fit rounded-[1.5rem] border border-neutral-800 bg-neutral-950 p-5 lg:sticky lg:top-28">
-            <div className="flex items-center gap-2 text-sm text-white" style={{ fontFamily: "'Inter', sans-serif" }}>
-              <SlidersHorizontal className="h-4 w-4 text-amber-400" />
-              Filter by
-            </div>
-            <div className="mt-5 space-y-6" style={{ fontFamily: "'Inter', sans-serif" }}>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">Category</p>
-                <div className="mt-3 space-y-2 text-sm text-neutral-300">
-                  {Object.keys(categoryIcons).map((category) => (
-                    <div key={category} className="rounded-xl border border-neutral-800 px-3 py-2">
-                      {category}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">Support</p>
-                <div className="mt-3 space-y-2 text-sm text-neutral-300">
-                  <div className="rounded-xl border border-neutral-800 px-3 py-2">Installation included</div>
-                  <div className="rounded-xl border border-neutral-800 px-3 py-2">On-site operator available</div>
-                  <div className="rounded-xl border border-neutral-800 px-3 py-2">Custom quote</div>
-                </div>
-              </div>
-            </div>
-          </aside>
-
-          <div className="space-y-5">
-            <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-950 p-5">
-              <p className="text-sm text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
-                {resultsCount} results for <span className="text-white">rent & installation</span>
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2" style={{ fontFamily: "'Inter', sans-serif" }}>
-                {['LED walls', 'Audio rigs', 'Stage builds', 'Lighting kits'].map((chip) => (
-                  <span key={chip} className="rounded-full border border-neutral-700 px-3 py-2 text-xs text-neutral-300">
-                    {chip}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {selectedProduct ? (
-              <div className="flex justify-end">
-                <Link
-                  to="/equipment-rentals"
-                  className="inline-flex items-center gap-2 text-sm text-amber-300 transition-colors hover:text-amber-200"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  Collapse expanded product
-                  <ChevronRight className="h-4 w-4" />
-                </Link>
-              </div>
-            ) : null}
-
-            {rentalProducts.map((product, index) => {
-            const Icon = categoryIcons[product.category];
-            const isActive = product.slug === slug;
-
-            return (
-              <motion.article
-                key={product.slug}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className={`overflow-hidden rounded-[1.75rem] border bg-white text-neutral-950 shadow-[0_20px_40px_rgba(0,0,0,0.18)] transition-all duration-300 ${
-                  isActive ? 'border-amber-400 ring-1 ring-amber-300/60' : 'border-neutral-200'
-                }`}
-              >
-                <div className="grid gap-0 md:grid-cols-[220px_minmax(0,1fr)_220px]">
-                  <div className="aspect-[4/3] overflow-hidden bg-neutral-100 md:aspect-auto md:h-full">
-                    <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
-                  </div>
-
-                  <div className="space-y-4 p-5 md:p-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
-                          {product.brand}
-                        </p>
-                        <h3 className="mt-2 text-2xl leading-tight text-[#0f1111]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                          {product.name}
-                        </h3>
-                        <p className="mt-2 text-sm text-sky-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                          {product.ratingLabel}
-                        </p>
-                      </div>
-                      <span className="rounded-full bg-amber-50 p-2 text-amber-600">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                    </div>
-
-                    <p className="text-sm leading-6 text-neutral-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      {product.shortDescription}
-                    </p>
-
-                    <ul className="space-y-2 text-sm text-neutral-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      {product.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
-                          <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <p className="text-sm text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      Best for: {product.idealFor}
-                    </p>
-                  </div>
-
-                  <div className="border-t border-neutral-200 bg-[#f7f8f8] p-5 md:border-t-0 md:border-l">
-                    <div className="space-y-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      <div>
-                        <p className="text-lg font-semibold text-[#0f1111]">{product.priceLabel}</p>
-                        <p className="mt-1 text-sm text-emerald-700">{product.setupLabel}</p>
-                      </div>
-                      <p className="text-sm leading-6 text-neutral-600">
-                        Slug link: `/equipment-rentals/{product.slug}`
-                      </p>
-                      <Link
-                        to={isActive ? '/equipment-rentals' : `/equipment-rentals/${product.slug}`}
-                        className={`inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-medium transition-colors ${
-                          isActive
-                            ? 'bg-neutral-950 text-white hover:bg-neutral-800'
-                            : 'bg-[#ffd814] text-[#0f1111] hover:bg-[#f7ca00]'
-                        }`}
-                      >
-                        {isActive ? 'Hide Details' : 'View Details'}
-                      </Link>
-                      <Link
-                        to="/contact"
-                        className="inline-flex w-full items-center justify-center rounded-full border border-neutral-300 bg-white px-4 py-3 text-sm font-medium text-[#0f1111] transition-colors hover:bg-neutral-50"
-                      >
-                        Ask for Quote
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
-            );
-            })}
+      <section className="border-b border-neutral-900 bg-[#050505]">
+        <div className="mx-auto max-w-7xl px-4 py-3 text-[13px] text-neutral-500 md:px-6">
+          <div className="flex flex-wrap items-center gap-2" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <Link to="/" className="transition-colors hover:text-[#F59E0B]">
+              Home
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="text-white">Rental Inventory</span>
           </div>
         </div>
       </section>
 
-      {selectedProduct ? (
-        <section ref={expandedRef} className="border-t border-neutral-800 bg-[#131921]">
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 py-12 lg:grid-cols-[minmax(0,1fr)_320px]">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35 }}
-              className="overflow-hidden rounded-[1.75rem] border border-neutral-800 bg-white text-[#0f1111]"
-            >
-              <div className="aspect-[16/8] overflow-hidden border-b border-neutral-200">
-                <img src={selectedProduct.image} alt={selectedProduct.name} className="h-full w-full object-cover" />
-              </div>
-              <div className="space-y-6 p-6 md:p-8">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="rounded-full border border-amber-300 bg-amber-50 px-4 py-2 text-xs uppercase tracking-[0.28em] text-amber-700">
-                    {selectedProduct.category}
-                  </span>
-                  <span className="text-sm text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
-                    Shareable URL: `/equipment-rentals/{selectedProduct.slug}`
-                  </span>
-                </div>
-
-                <div>
-                  <h2 className="text-4xl md:text-5xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    {selectedProduct.name}
-                  </h2>
-                  <p className="mt-2 text-sm text-sky-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                    {selectedProduct.ratingLabel}
-                  </p>
-                  <p className="mt-4 max-w-3xl text-base leading-7 text-neutral-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                    {selectedProduct.summary}
-                  </p>
-                </div>
-
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="rounded-[1.5rem] border border-neutral-200 bg-neutral-50 p-5">
-                    <p className="text-sm uppercase tracking-[0.25em] text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      Best For
-                    </p>
-                    <p className="mt-3 text-base leading-7 text-neutral-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      {selectedProduct.idealFor}
-                    </p>
-                  </div>
-                  <div className="rounded-[1.5rem] border border-neutral-200 bg-neutral-50 p-5">
-                    <p className="text-sm uppercase tracking-[0.25em] text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      Installation Support
-                    </p>
-                    <ul className="mt-3 space-y-2 text-base leading-7 text-neutral-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                      {selectedProduct.support.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.aside
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.05 }}
-              className="h-fit rounded-[1.75rem] border border-neutral-800 bg-white p-6 text-[#0f1111] lg:sticky lg:top-28"
-            >
-              <h3 className="text-3xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                Quick Actions
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-neutral-600" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Use the slug link to send this exact package state to the team or move straight into quotation.
+      <section className="border-b border-neutral-900 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.16),_transparent_32%),linear-gradient(180deg,#0b0b0b_0%,#050505_100%)]">
+        <div className="mx-auto max-w-7xl px-4 py-8 md:px-6">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p
+                className="text-xs font-semibold uppercase tracking-[0.32em] text-[#F59E0B]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Professional Production Gear
               </p>
-              <ul className="mt-6 space-y-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-                {selectedProduct.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 rounded-[1.25rem] border border-neutral-200 bg-neutral-50 p-4 text-neutral-700">
-                    <BadgeCheck className="mt-1 h-5 w-5 shrink-0 text-amber-500" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <h1
+                className="mt-3 text-4xl leading-none text-white md:text-5xl"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              >
+                Rental Inventory
+              </h1>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+                Browse our camera, lighting, audio, and support inventory built for shoots, events, and branded production.
+              </p>
+            </div>
 
-              <div className="mt-8 rounded-[1.5rem] border border-neutral-200 bg-[#f7f8f8] p-5">
-                <p className="text-sm uppercase tracking-[0.25em] text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Pricing & Setup
+            <div className="flex w-full max-w-xl flex-col gap-3 md:flex-row">
+              <label className="relative block flex-1">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
+                <input
+                  aria-label="Search rental gear"
+                  placeholder="Search products..."
+                  className="h-12 w-full rounded-none border border-neutral-800 bg-neutral-950 pl-11 pr-4 text-sm text-white placeholder:text-neutral-500 focus:border-[#F59E0B] focus:outline-none"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                />
+              </label>
+              <Link
+                to="/contact"
+                className="inline-flex h-12 items-center justify-center border border-[#F59E0B] bg-[#F59E0B] px-6 text-sm font-medium text-black transition-colors hover:bg-[#d88907] hover:border-[#d88907]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Get Quote
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {popularTags.map((tag) => (
+              <span
+                key={tag}
+                className="border border-neutral-800 bg-neutral-950 px-3 py-2 text-xs uppercase tracking-[0.18em] text-neutral-400"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-8 md:px-6">
+        <div className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
+          <aside className="space-y-6">
+            <div className="border border-neutral-900 bg-neutral-950">
+              <div className="border-b border-neutral-900 px-5 py-4">
+                <p className="flex items-center gap-2 text-sm font-semibold text-white" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <ListFilter className="h-4 w-4" />
+                  Product Categories
                 </p>
-                <p className="mt-3 text-lg font-semibold text-[#0f1111]" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  {selectedProduct.priceLabel}
-                </p>
-                <p className="mt-2 text-sm leading-6 text-emerald-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  {selectedProduct.setupLabel}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-neutral-600" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Share the slug or ask for a venue-specific installation quote.
-                </p>
-                <Link
-                  to="/contact"
-                  className="mt-5 inline-flex w-full justify-center rounded-full bg-[#ffd814] px-5 py-3 text-sm font-medium text-[#0f1111] transition-colors hover:bg-[#f7ca00]"
+              </div>
+
+              <div className="px-5 py-2">
+                {rentalCategories.map((category) => (
+                  <div key={category.name} className="border-b border-neutral-900 py-3 last:border-b-0">
+                    <div className="flex items-center justify-between gap-3 text-sm text-neutral-200" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      <span className="flex items-center gap-2">
+                        {category.children ? <ChevronDown className="h-4 w-4 text-neutral-500" /> : null}
+                        {category.name}
+                      </span>
+                      <span className="text-neutral-500">({category.count})</span>
+                    </div>
+
+                    {category.children ? (
+                      <div className="ml-6 mt-3 space-y-2 text-sm text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {category.children.map((child) => (
+                          <div key={child.name} className="flex items-center justify-between gap-3">
+                            <span>{child.name}</span>
+                            <span>({child.count})</span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="border border-[#3a2b12] bg-[linear-gradient(180deg,rgba(245,158,11,0.1),rgba(245,158,11,0.03))] p-5">
+              <h2 className="text-lg text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                Need custom packaging?
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-neutral-300" style={{ fontFamily: "'Inter', sans-serif" }}>
+                We can bundle camera, lenses, lighting, operators, and transport for single-day or long-format productions.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-5 inline-flex w-full items-center justify-center border border-[#F59E0B] px-4 py-3 text-sm font-medium text-[#F59E0B] transition-colors hover:bg-[#F59E0B] hover:text-black"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Talk to Team
+              </Link>
+            </div>
+          </aside>
+
+          <div>
+            {selectedProduct ? (
+              <div className="mb-6 border border-[#5a3c0e] bg-[linear-gradient(180deg,rgba(245,158,11,0.14),rgba(245,158,11,0.04))] p-5">
+                <div className="flex flex-col gap-5 lg:flex-row lg:items-center">
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.name}
+                    className="h-28 w-full border border-[#5a3c0e] object-cover lg:w-44"
+                  />
+                  <div className="flex-1">
+                    <p
+                      className="text-xs font-semibold uppercase tracking-[0.24em] text-[#F59E0B]"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      Selected Product
+                    </p>
+                    <h2
+                      className="mt-2 text-[32px] leading-8 text-white"
+                      style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    >
+                      {selectedProduct.name}
+                    </h2>
+                    <p className="mt-3 text-sm leading-7 text-neutral-300" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      {selectedProduct.summary}
+                    </p>
+                  </div>
+                  <div className="min-w-40">
+                    <p className="text-lg font-semibold text-white" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      {selectedProduct.price}
+                    </p>
+                    <p className="mt-1 text-sm text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      {selectedProduct.availability}
+                    </p>
+                    <Link
+                      to="/contact"
+                      className="mt-4 inline-flex w-full items-center justify-center border border-[#F59E0B] bg-[#F59E0B] px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-[#d88907] hover:border-[#d88907]"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      Request Quote
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            <div className="flex flex-col gap-4 border border-neutral-900 bg-neutral-950 px-5 py-4 md:flex-row md:items-center md:justify-between">
+              <p className="text-sm text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+                Showing 1-8 of 98 results
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  className="inline-flex h-10 w-10 items-center justify-center border border-[#F59E0B] bg-[#F59E0B] text-black"
+                  aria-label="Grid view"
+                >
+                  <Grid2x2 className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex h-10 items-center justify-center border border-neutral-800 bg-black px-4 text-sm text-neutral-300"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  Request Quote
-                </Link>
+                  Default sorting
+                  <ChevronDown className="ml-2 h-4 w-4" />
+                </button>
               </div>
-            </motion.aside>
+            </div>
+
+            <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {rentalProducts.map((product, index) => (
+                <motion.article
+                  key={product.slug}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.42, delay: index * 0.05 }}
+                  className="group border border-neutral-900 bg-neutral-950"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span
+                      className="absolute left-4 top-4 bg-black/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F59E0B] ring-1 ring-[#F59E0B]/40"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      {product.category}
+                    </span>
+                  </div>
+
+                  <div className="space-y-4 p-5">
+                    <div className="flex items-center gap-2 text-sm text-[#F59E0B]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      <div className="flex items-center gap-1">
+                        <Star className="h-4 w-4 fill-current" />
+                        <span>{product.rating}</span>
+                      </div>
+                      <span className="text-neutral-600">|</span>
+                      <span className="text-neutral-500">{product.reviews}</span>
+                    </div>
+
+                    <div>
+                      <h3
+                        className="text-[28px] leading-8 text-white transition-colors group-hover:text-[#F59E0B]"
+                        style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                      >
+                        {product.name}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {product.summary}
+                      </p>
+                    </div>
+
+                    <div className="border-t border-neutral-900 pt-4">
+                      <p className="text-lg font-semibold text-white" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {product.price}
+                      </p>
+                      <p className="mt-1 text-sm text-neutral-500" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {product.availability}
+                      </p>
+                    </div>
+
+                    <div className="flex gap-3 pt-1">
+                      <Link
+                        to={`/equipment-rentals/${product.slug}`}
+                        className="inline-flex flex-1 items-center justify-center border border-[#F59E0B] bg-[#F59E0B] px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-[#d88907] hover:border-[#d88907]"
+                        style={{ fontFamily: "'Inter', sans-serif" }}
+                      >
+                        View Details
+                      </Link>
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center justify-center border border-neutral-800 bg-black px-4 py-3 text-sm font-medium text-white transition-colors hover:border-[#F59E0B] hover:text-[#F59E0B]"
+                        style={{ fontFamily: "'Inter', sans-serif" }}
+                      >
+                        Quote
+                      </Link>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center border border-neutral-800 bg-neutral-950 px-6 py-3 text-sm font-medium text-white transition-colors hover:border-[#F59E0B] hover:text-[#F59E0B]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Load More Products
+              </button>
+            </div>
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
+
+      <section className="border-t border-neutral-900 bg-[#050505]">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 md:px-6 lg:grid-cols-3">
+          <div className="border border-neutral-900 bg-neutral-950 p-6">
+            <h2 className="text-[30px] text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Rental Terms
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+              Government ID, booking confirmation, and a refundable security amount may be required depending on gear category.
+            </p>
+          </div>
+          <div className="border border-neutral-900 bg-neutral-950 p-6">
+            <h2 className="text-[30px] text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Delivery Support
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+              Pickup from Delhi NCR is fastest, and our team can also arrange transport, setup, and operator support when needed.
+            </p>
+          </div>
+          <div className="border border-neutral-900 bg-neutral-950 p-6">
+            <h2 className="text-[30px] text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Need Help Choosing?
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-neutral-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+              Tell us your shoot date, venue, and output requirements and we’ll recommend the right package instead of overselling gear.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
