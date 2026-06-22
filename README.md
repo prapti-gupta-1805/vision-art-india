@@ -10,41 +10,69 @@ A freelance website developed for Vision Art India to showcase premium event pro
 
 ## Screenshots
 
-### Hero Experience
+### Landing Experience
 
-![Hero Section](./screenshots/hero-section.png)
+![Landing Experience](screenshots/landing-page.png)
 
-*Premium landing experience featuring immersive visuals, brand storytelling, and service highlights.*
+*Immersive hero section featuring event photography, premium branding, and intuitive navigation designed to showcase Vision Art India's creative identity.*
 
-### Event Production Services
+---
 
-![Services Showcase](./screenshots/services-showcase.png)
+### Services Overview
 
-*Comprehensive overview of Vision Art India's event production offerings, including weddings, fashion shows, corporate events, stage production, and audiovisual solutions.*
+![Services Overview](screenshots/our-services.png)
 
-### Portfolio Gallery
+*Comprehensive service showcase covering fashion shows, weddings, corporate events, stage production, audiovisual solutions, and event management services.*
 
-![Portfolio Gallery](./screenshots/portfolio-gallery.png)
+---
 
-*Interactive portfolio showcasing event highlights, production work, and creative executions through a dynamic slideshow experience.*
+### Event Solutions & Experiences
 
-### Featured Experiences
+![Event Solutions](screenshots/what-we-do.png)
 
-![Event Categories](./screenshots/event-categories.png)
+*Dedicated service pages highlighting tailored event solutions, production capabilities, and end-to-end experience management.*
 
-*Dedicated sections highlighting specialized event categories and production capabilities.*
+---
 
-### Contact & Lead Generation
+### Portfolio Showcase
 
-![Contact Form](./screenshots/contact-form.png)
+![Portfolio Showcase](screenshots/what-we-do-2.png)
 
-*EmailJS-powered inquiry form designed to streamline client communication and lead capture.*
+*Visual portfolio featuring real-world event executions, large-scale productions, and client success stories across multiple event categories.*
 
-### Mobile Experience
+---
 
-![Mobile Responsive Design](./screenshots/mobile-view.png)
+### Client Contact & Lead Generation
 
-*Fully responsive design optimized for mobile, tablet, and desktop users.*
+![Contact Experience](screenshots/get-in-touch.png)
+
+*EmailJS-powered contact experience enabling prospective clients to connect directly with the team through an integrated inquiry form.*
+
+---
+
+### Call-to-Action & Footer Experience
+
+![Call To Action](screenshots/get-in-touch-2.png)
+
+*Conversion-focused section encouraging user engagement while providing contact information, company details, and social media access.*
+
+---
+
+### Mobile Responsive Design
+
+#### Mobile Service Experience
+
+![Mobile Services](screenshots/mobile-1.png)
+
+#### Mobile Contact Experience
+
+![Mobile Contact](screenshots/mobile-2.png)
+
+#### Mobile Service Cards
+
+![Mobile Service Cards](screenshots/mobile-3.png)
+
+*Fully responsive mobile-first design optimized for seamless browsing, portfolio exploration, service discovery, and client communication across devices.*
 
 ---
 
